@@ -1,6 +1,6 @@
 ''' My Calculator Test'''
 import pytest
-from app.main import addition, division, multiplication, subtraction
+from app.opperations import addition, division, multiplication, subtraction
 
 def test_addition():
     '''Addition function'''
@@ -14,9 +14,9 @@ def test_multiplication():
     '''Multiplication function'''
     assert multiplication(1,2) == 2
 
-def test_positive_division():
+def test_division():
     '''Positive Division Test'''
-    assert division(1,1) == 1
+    assert division(2,2) == 1
 
 def test_negative_division():
     '''Negative Division Test'''
