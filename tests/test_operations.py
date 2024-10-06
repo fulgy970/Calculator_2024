@@ -1,24 +1,34 @@
-''' My Calculator Test'''
 import pytest
 from app.opperations import addition, division, multiplication, subtraction
 
-def test_addition():
+
+
+# Parameterized addition test
+@pytest.mark.parametrize("a, b, expected", [(1, 1, 2), (2, 3, 5), (-1, -1, -2), (0, 0, 0)])
+def test_addition(a, b, expected):
     '''Addition function'''
-    assert addition(1,1)  == 2
+    assert addition(a, b) == expected
 
-def test_subtraction():
+# Parameterized subtraction test
+@pytest.mark.parametrize("a, b, expected", [(1, 1, 0), (5, 3, 2), (-1, -1, 0), (0, 5, -5)])
+def test_subtraction(a, b, expected):
     '''Subtraction function'''
-    assert subtraction(1,1) == 0
+    assert subtraction(a, b) == expected
 
-def test_multiplication():
+# Parameterized multiplication test
+@pytest.mark.parametrize("a, b, expected", [(2, 2, 4), (3, 5, 15), (0, 5, 0), (-1, 1, -1)])
+def test_multiplication(a, b, expected):
     '''Multiplication function'''
-    assert multiplication(1,2) == 2
+    assert multiplication(a, b) == expected
 
-def test_division():
+# Parameterized division test
+@pytest.mark.parametrize("a, b, expected", [(2, 2, 1), (10, 5, 2), (9, 3, 3)])
+def test_division(a, b, expected):
     '''Positive Division Test'''
-    assert division(2,2) == 1
+    assert division(a, b) == expected
 
-def test_negative_division():
-    '''Negative Division Test'''
+# Test for division by zero with fixture
+def test_division_by_Zero_expection():
+    '''Division function testing that I get the expection divide by zero'''
     with pytest.raises(ZeroDivisionError):
-        division(10,0)
+        division(10, 0)
